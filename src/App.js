@@ -1,25 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import Brojac from './brojac';
+import Counter from './counter';
+import MovieList from './components/movieList';
+import { MovieProvider } from './components/movieContext';
+import Shop from './shop';
+import About from './about';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+    <MovieProvider>
+      <div>
+        <About />
+        <Route path = "/promeniboju" component = {Brojac} />
+        <Route path = "/counter" component = {Counter} />
+        <Route path = "/listafilmova" component = {MovieList} />
+        <Route path = "/shopping" component = {Shop} />
+        
+
+      </div>
+    </MovieProvider>
+    </Router>
   );
 }
 
